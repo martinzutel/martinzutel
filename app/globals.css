@@ -93,6 +93,8 @@ body {
 .hero-visual {
   position: relative;
   overflow: hidden;
+  mask-image: linear-gradient(to right, transparent 0%, black 22%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 22%);
 }
 
 /* Gallery */
