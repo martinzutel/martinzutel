@@ -38,7 +38,7 @@ export default function Home() {
             <span style={{ color: "var(--accent)" }}>forma</span>, el{" "}
             <span style={{ color: "var(--accent)" }}>detalle</span> y el{" "}
             <span style={{ color: "var(--accent)" }}>ritmo visual</span>.{" "}
-            Diseño gráfico, web y fotografía, video — este sitio incluido.
+            Diseño gráfico, fotografía, video y web — este sitio incluido.
           </motion.p>
 
           <BirdScroll />
