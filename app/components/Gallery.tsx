@@ -71,10 +71,7 @@ function GalleryItem({ src, w, h, priority }: { src: string; w: number; h: numbe
 
 export default function Gallery() {
   return (
-    <section
-      className="gallery-section"
-      style={{ padding: "0 clamp(2rem, 5vw, 6rem) 6rem" }}
-    >
+    <section className="gallery-section">
       <div className="masonry-grid">
         {photos.map((photo, i) => (
           <GalleryItem key={photo.src} {...photo} priority={i < 3} />

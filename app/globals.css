@@ -83,6 +83,10 @@ body {
 }
 
 /* Gallery */
+.gallery-section {
+  padding: 0 clamp(2rem, 5vw, 6rem) 6rem;
+}
+
 .masonry-grid {
   columns: 3;
   column-gap: 6px;
@@ -94,6 +98,10 @@ body {
   width: 100%;
   position: relative;
   overflow: hidden;
+}
+
+.hero-paragraph {
+  max-width: 38ch;
 }
 
 /* Tablet */
@@ -117,17 +125,28 @@ body {
 
 /* Mobile */
 @media (max-width: 600px) {
+  .hero-section {
+    min-height: 100svh;
+  }
   .hero-content {
-    padding-top: 4rem;
+    padding-top: 5rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-    padding-bottom: 2.5rem;
+    padding-bottom: 3rem;
+    align-items: center;
+    text-align: center;
+  }
+  .hero-paragraph {
+    max-width: 100%;
   }
   .masonry-grid {
-    columns: 1;
+    columns: 2;
+    column-gap: 4px;
+  }
+  .masonry-item {
+    margin-bottom: 4px;
   }
   .gallery-section {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding: 0 0.75rem 4rem;
   }
 }
