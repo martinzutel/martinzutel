@@ -34,16 +34,11 @@ export default function Home() {
             className="hero-paragraph text-lg font-light leading-relaxed"
             style={{ color: "var(--text-secondary)" }}
           >
-            Me estoy adentrando en el mundo del{" "}
-            <span style={{ color: "var(--accent)" }}>diseño gráfico</span>,
-            la <span style={{ color: "var(--accent)" }}>fotografía</span> y
-            la{" "}
-            <span style={{ color: "var(--accent)" }}>edición de video</span>.
-            Son los campos en los que quiero desarrollarme — áreas donde el{" "}
-            <span style={{ color: "var(--accent)" }}>criterio visual</span>{" "}
-            y la{" "}
-            <span style={{ color: "var(--accent)" }}>atención al detalle</span>{" "}
-            marcan la diferencia.
+            Me obsesiona la{" "}
+            <span style={{ color: "var(--accent)" }}>forma</span>, el{" "}
+            <span style={{ color: "var(--accent)" }}>detalle</span> y el{" "}
+            <span style={{ color: "var(--accent)" }}>ritmo visual</span>.{" "}
+            Diseño gráfico, web y fotografía, video — este sitio incluido.
           </motion.p>
 
           <BirdScroll />
