@@ -24,7 +24,7 @@ export default function Home() {
           >
             Martin
             <br />
-            <span style={{ color: "var(--text-secondary)" }}>Zutelman</span>
+            Zutelman
           </motion.h1>
 
           <motion.p
