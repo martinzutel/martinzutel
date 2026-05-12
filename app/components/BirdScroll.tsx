@@ -23,7 +23,7 @@ export default function BirdScroll() {
 
   useEffect(() => {
     const onScroll = () => {
-      if (!ref.current) return;
+      if (!ref.current || window.innerWidth <= 600) return;
       ref.current.style.opacity = String(Math.max(0, 1 - window.scrollY / 130));
     };
     window.addEventListener("scroll", onScroll, { passive: true });

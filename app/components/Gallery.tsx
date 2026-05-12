@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 const photos = [
@@ -70,13 +71,38 @@ function GalleryItem({ src, w, h, priority }: { src: string; w: number; h: numbe
 }
 
 export default function Gallery() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.04 });
+
   return (
-    <section className="gallery-section">
+    <motion.section
+      ref={ref}
+      className="gallery-section"
+      style={{ position: "relative" }}
+      initial={{ opacity: 0 }}
+      animate={isInView ? { opacity: 1 } : {}}
+      transition={{ duration: 1.2, ease: "easeOut" }}
+    >
+      <motion.div
+        initial={{ opacity: 1 }}
+        animate={isInView ? { opacity: 0 } : {}}
+        transition={{ duration: 1.6, ease: "easeOut" }}
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: "220px",
+          background: "linear-gradient(to bottom, var(--bg) 0%, transparent 100%)",
+          pointerEvents: "none",
+          zIndex: 2,
+        }}
+      />
       <div className="masonry-grid">
         {photos.map((photo, i) => (
           <GalleryItem key={photo.src} {...photo} priority={i < 3} />
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 }

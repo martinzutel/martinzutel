@@ -17,7 +17,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
             className="font-light leading-none mb-8"
             style={{
-              fontSize: "clamp(2.6rem, 6vw, 7rem)",
+              fontSize: "clamp(3.4rem, 7vw, 9rem)",
               color: "var(--text-primary)",
               letterSpacing: "-0.045em",
             }}
@@ -31,7 +31,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.35, ease: "easeOut" }}
-            className="hero-paragraph text-base font-light leading-relaxed"
+            className="hero-paragraph text-lg font-light leading-relaxed"
             style={{ color: "var(--text-secondary)" }}
           >
             Me estoy adentrando en el mundo del{" "}
