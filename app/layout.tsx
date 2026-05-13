@@ -11,6 +11,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Martin Zutelman",
   description: "Diseño gráfico, fotografía y contenido audiovisual. Estudiante de Imagen y Sonido (UBA) con criterio visual y atención al detalle.",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
