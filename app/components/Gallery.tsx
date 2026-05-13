@@ -30,11 +30,12 @@ const photos = [
   { src: "IMG_8870.JPG",     w: 4032, h: 2077 },
 ];
 
-function GalleryItem({ src, w, h, priority }: { src: string; w: number; h: number; priority: boolean }) {
+function GalleryItem({ src, w, h, priority, preVisible }: { src: string; w: number; h: number; priority: boolean; preVisible?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(preVisible ?? false);
 
   useEffect(() => {
+    if (preVisible) return;
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
@@ -43,7 +44,7 @@ function GalleryItem({ src, w, h, priority }: { src: string; w: number; h: numbe
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [preVisible]);
 
   return (
     <div
@@ -52,8 +53,7 @@ function GalleryItem({ src, w, h, priority }: { src: string; w: number; h: numbe
       style={{
         aspectRatio: `${w} / ${h}`,
         opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(20px)",
-        transition: "opacity 0.7s ease, transform 0.7s ease",
+        transition: "opacity 0.8s ease",
       }}
     >
       <Image
@@ -100,7 +100,7 @@ export default function Gallery() {
       />
       <div className="masonry-grid">
         {photos.map((photo, i) => (
-          <GalleryItem key={photo.src} {...photo} priority={i < 3} />
+          <GalleryItem key={photo.src} {...photo} priority={i < 3} preVisible={i < 9} />
         ))}
       </div>
     </motion.section>

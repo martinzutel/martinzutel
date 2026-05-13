@@ -62,7 +62,7 @@ body {
 
 /* Hero */
 .hero-section {
-  min-height: 92vh;
+  min-height: 76vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   position: relative;
@@ -149,7 +149,7 @@ body {
 /* Mobile */
 @media (max-width: 600px) {
   .hero-section {
-    min-height: 100svh;
+    min-height: 84svh;
   }
   .hero-content {
     padding-top: 5rem;
