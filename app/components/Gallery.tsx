@@ -30,21 +30,30 @@ const photos = [
   { src: "IMG_8870.JPG",     w: 4032, h: 2077 },
 ];
 
-function GalleryItem({ src, w, h, priority, preVisible }: { src: string; w: number; h: number; priority: boolean; preVisible?: boolean }) {
+// Distribuir en 3 columnas round-robin para que todas empiecen a la misma altura
+const col1 = photos.filter((_, i) => i % 3 === 0);
+const col2 = photos.filter((_, i) => i % 3 === 1);
+const col3 = photos.filter((_, i) => i % 3 === 2);
+
+function GalleryItem({ src, w, h, priority }: { src: string; w: number; h: number; priority: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(preVisible ?? false);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (preVisible) return;
     const el = ref.current;
     if (!el) return;
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      setVisible(true);
+      return;
+    }
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
       { threshold: 0.05 }
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [preVisible]);
+  }, []);
 
   return (
     <div
@@ -60,12 +69,26 @@ function GalleryItem({ src, w, h, priority, preVisible }: { src: string; w: numb
         src={`/photos/${src}`}
         alt=""
         fill
-        sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        sizes="(max-width: 600px) 50vw, (max-width: 1024px) 50vw, 33vw"
         style={{ objectFit: "cover", transition: "transform 0.6s ease" }}
         priority={priority}
         onMouseEnter={(e) => ((e.currentTarget as HTMLImageElement).style.transform = "scale(1.03)")}
         onMouseLeave={(e) => ((e.currentTarget as HTMLImageElement).style.transform = "scale(1)")}
       />
+    </div>
+  );
+}
+
+function Column({ items, startIndex }: { items: typeof photos; startIndex: number }) {
+  return (
+    <div className="masonry-column">
+      {items.map((photo, i) => (
+        <GalleryItem
+          key={photo.src}
+          {...photo}
+          priority={startIndex + i < 3}
+        />
+      ))}
     </div>
   );
 }
@@ -99,9 +122,9 @@ export default function Gallery() {
         }}
       />
       <div className="masonry-grid">
-        {photos.map((photo, i) => (
-          <GalleryItem key={photo.src} {...photo} priority={i < 3} preVisible={i < 9} />
-        ))}
+        <Column items={col1} startIndex={0} />
+        <Column items={col2} startIndex={1} />
+        <Column items={col3} startIndex={2} />
       </div>
     </motion.section>
   );
