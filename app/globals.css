@@ -62,7 +62,7 @@ body {
 
 /* Hero */
 .hero-section {
-  min-height: 62vh;
+  min-height: 52vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   position: relative;
@@ -74,7 +74,7 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 160px;
+  height: 140px;
   background: linear-gradient(to bottom, transparent, var(--bg));
   pointer-events: none;
   z-index: 1;
@@ -85,8 +85,8 @@ body {
   flex-direction: column;
   justify-content: center;
   gap: 1.75rem;
-  padding-top: 6rem;
-  padding-bottom: 4rem;
+  padding-top: 3.5rem;
+  padding-bottom: 3rem;
   padding-left: clamp(2rem, 5vw, 6rem);
   padding-right: 3rem;
 }

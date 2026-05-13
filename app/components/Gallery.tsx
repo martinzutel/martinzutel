@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 const photos = [
@@ -31,36 +31,13 @@ type Photo = { src: string; w: number; h: number };
 type PhotoWithIndex = Photo & { index: number };
 
 function GalleryItem({ src, w, h, priority }: { src: string; w: number; h: number; priority: boolean }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.05 }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <div
-      ref={ref}
+    <motion.div
       className="masonry-item"
-      style={{
-        aspectRatio: `${w} / ${h}`,
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(20px)",
-        transition: "opacity 0.7s ease, transform 0.7s ease",
-      }}
+      style={{ aspectRatio: `${w} / ${h}` }}
+      initial={{ opacity: 0, y: 18 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.65, ease: "easeOut" }}
     >
       <Image
         src={`/photos/${src}`}
@@ -72,13 +49,12 @@ function GalleryItem({ src, w, h, priority }: { src: string; w: number; h: numbe
         onMouseEnter={(e) => ((e.currentTarget as HTMLImageElement).style.transform = "scale(1.03)")}
         onMouseLeave={(e) => ((e.currentTarget as HTMLImageElement).style.transform = "scale(1)")}
       />
-    </div>
+    </motion.div>
   );
 }
 
 export default function Gallery() {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.04 });
   const [columnCount, setColumnCount] = useState(3);
 
   useEffect(() => {
@@ -99,21 +75,18 @@ export default function Gallery() {
       ref={ref}
       className="gallery-section"
       style={{ position: "relative" }}
-      initial={{ opacity: 0 }}
-      animate={isInView ? { opacity: 1 } : {}}
-      transition={{ duration: 1.2, ease: "easeOut" }}
+      initial={{ opacity: 0, y: 18 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      <motion.div
-        initial={{ opacity: 1 }}
-        animate={isInView ? { opacity: 0 } : {}}
-        transition={{ duration: 1.6, ease: "easeOut" }}
+      <div
         style={{
           position: "absolute",
           top: 0,
           left: 0,
           right: 0,
-          height: "150px",
-          background: "linear-gradient(to bottom, var(--bg) 0%, transparent 100%)",
+          height: "120px",
+          background: "linear-gradient(to bottom, rgba(12, 11, 9, 0.62) 0%, rgba(12, 11, 9, 0.18) 35%, rgba(12, 11, 9, 0.04) 65%, rgba(12, 11, 9, 0) 100%)",
           pointerEvents: "none",
           zIndex: 2,
         }}
