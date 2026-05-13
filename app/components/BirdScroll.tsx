@@ -1,6 +1,5 @@
 "use client";
 import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
 
 const BIRDS = [
   { x: -50, y: 0,  delay: 0    },
@@ -19,24 +18,11 @@ const FLAP = [
 ];
 
 export default function BirdScroll() {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const onScroll = () => {
-      if (!ref.current || window.innerWidth <= 600) return;
-      ref.current.style.opacity = String(Math.max(0, 1 - window.scrollY / 130));
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
     <motion.div
-      ref={ref}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8, delay: 1.1 }}
-      style={{ marginTop: "3.5rem", transition: "opacity 0.2s ease" }}
     >
       <motion.div
         animate={{ y: [0, 14, 0] }}

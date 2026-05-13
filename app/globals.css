@@ -84,6 +84,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 1.75rem;
   padding-top: 6rem;
   padding-bottom: 4rem;
   padding-left: clamp(2rem, 5vw, 6rem);
@@ -119,8 +120,15 @@ body {
   max-width: 38ch;
 }
 
+.bird-second {
+  display: block;
+}
+
 /* Tablet */
 @media (max-width: 1024px) {
+  .bird-second {
+    display: none;
+  }
   .hero-section {
     grid-template-columns: 1fr;
     min-height: 100svh;
