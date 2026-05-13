@@ -103,14 +103,15 @@ body {
   padding: 0 clamp(2rem, 5vw, 6rem) 6rem;
 }
 
-.masonry-grid {
+.gallery-grid {
   display: flex;
   gap: 6px;
   align-items: flex-start;
 }
 
-.masonry-column {
+.gallery-column {
   flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -147,8 +148,11 @@ body {
     padding-right: clamp(2rem, 5vw, 6rem);
     padding-bottom: 3rem;
   }
-  .masonry-grid {
-    columns: 2;
+  .gallery-grid {
+    flex-direction: column;
+  }
+  .gallery-column {
+    width: 100%;
   }
 }
 
@@ -168,14 +172,15 @@ body {
   .hero-paragraph {
     max-width: 100%;
   }
-  .masonry-grid {
-    gap: 4px;
+  .gallery-grid {
+    flex-wrap: wrap;
   }
-  .masonry-column {
-    gap: 4px;
+  .gallery-column {
+    flex: 0 0 calc(50% - 3px);
+    width: calc(50% - 3px);
   }
-  .masonry-column:last-child {
-    display: none;
+  .masonry-item {
+    margin-bottom: 4px;
   }
   .gallery-section {
     padding: 0 0.75rem 4rem;
