@@ -92,7 +92,7 @@ export default function Gallery() {
           top: 0,
           left: 0,
           right: 0,
-          height: "150px",
+          height: "80px",
           background: "linear-gradient(to bottom, var(--bg) 0%, transparent 100%)",
           pointerEvents: "none",
           zIndex: 2,
