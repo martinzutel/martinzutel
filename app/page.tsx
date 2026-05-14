@@ -1,9 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import MeshAnimation from "./components/MeshAnimation";
 import Gallery from "./components/Gallery";
 import BirdScroll from "./components/BirdScroll";
+import NavBar from "./components/NavBar";
+
+type Tab = "fotografía" | "sobre mí";
 
 function InstagramIcon() {
   return (
@@ -33,6 +37,8 @@ const socialLinks = [
 ];
 
 export default function Home() {
+  const [activeTab, setActiveTab] = useState<Tab>("fotografía");
+
   return (
     <main>
       {/* Hero */}
@@ -116,7 +122,25 @@ export default function Home() {
         </motion.div>
       </section>
 
-      <Gallery />
+      <NavBar active={activeTab} onSelect={setActiveTab} />
+
+      {activeTab === "fotografía" ? (
+        <Gallery />
+      ) : (
+        <div
+          style={{
+            minHeight: "50vh",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "var(--text-tertiary)",
+            fontSize: "0.875rem",
+            letterSpacing: "0.02em",
+          }}
+        >
+          próximamente
+        </div>
+      )}
     </main>
   );
 }
