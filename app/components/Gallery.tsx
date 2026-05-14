@@ -72,7 +72,7 @@ function GalleryItem({ src, w, h, priority }: { src: string; w: number; h: numbe
 
 export default function Gallery() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.04 });
+  const isInView = useInView(ref, { once: true, amount: 0 });
 
   return (
     <motion.section
@@ -81,7 +81,7 @@ export default function Gallery() {
       style={{ position: "relative" }}
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : {}}
-      transition={{ duration: 1.2, ease: "easeOut" }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
     >
       <motion.div
         initial={{ opacity: 1 }}

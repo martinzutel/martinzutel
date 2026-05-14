@@ -62,7 +62,7 @@ body {
 
 /* Hero */
 .hero-section {
-  min-height: 65vh;
+  min-height: 55vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   position: relative;
