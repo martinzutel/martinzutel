@@ -234,13 +234,14 @@ body {
     min-height: 100svh;
   }
   .hero-content {
-    padding-top: 4.5rem;
+    padding-top: 5rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-    padding-bottom: 2rem;
+    padding-bottom: 3rem;
     align-items: center;
     text-align: center;
     gap: 1.25rem;
+    justify-content: center;
   }
   .hero-paragraph {
     max-width: 100%;
@@ -254,6 +255,9 @@ body {
   }
   .gallery-section {
     padding: 0 0.75rem 4rem;
+  }
+  .content-wrapper {
+    margin-top: -2rem;
   }
   .about-section {
     padding: 5rem 1.5rem 5rem;

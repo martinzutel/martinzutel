@@ -178,7 +178,7 @@ export default function Home() {
 
       <div ref={contentRef}>
         <NavBar active={activeTab} onSelect={setActiveTab} />
-        <div style={{ marginTop: "-5rem" }}>
+        <div className="content-wrapper" style={{ marginTop: "-5rem" }}>
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
