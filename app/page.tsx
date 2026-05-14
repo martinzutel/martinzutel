@@ -1,12 +1,11 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import MeshAnimation from "./components/MeshAnimation";
 import Gallery from "./components/Gallery";
 import BirdScroll from "./components/BirdScroll";
 import NavBar from "./components/NavBar";
-
 type Tab = "fotografía" | "sobre mí";
 
 function InstagramIcon() {
@@ -31,6 +30,50 @@ function LinkedInIcon() {
   );
 }
 
+function AboutSection() {
+  return (
+    <motion.section
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.55, ease: "easeOut" }}
+      className="about-section"
+    >
+      <p className="about-bio-text">
+        Me estoy abriendo camino en el{" "}
+        <span style={{ color: "var(--accent)" }}>diseño gráfico</span>, la{" "}
+        <span style={{ color: "var(--accent)" }}>fotografía</span>, la{" "}
+        <span style={{ color: "var(--accent)" }}>edición de video</span> y el{" "}
+        <span style={{ color: "var(--accent)" }}>desarrollo web</span>. No
+        desde la teoría — desde el hacer. Cada proyecto es una oportunidad de
+        afinar el ojo, de aprender a ver antes de ejecutar.
+      </p>
+
+      <div className="about-grid">
+        <div className="about-col">
+          <span className="about-label">Formación</span>
+          <p className="about-value">Especialización en Tecnología, Comunicación e Información</p>
+          <p className="about-subvalue">ORT Belgrano</p>
+          <p className="about-value" style={{ marginTop: "1rem" }}>CBC — Imagen y Sonido</p>
+          <p className="about-subvalue">Universidad de Buenos Aires</p>
+        </div>
+
+        <div className="about-col">
+          <span className="about-label">Disciplinas</span>
+          {["Diseño gráfico", "Fotografía", "Edición de video", "Desarrollo web"].map((d) => (
+            <p key={d} className="about-value">{d}</p>
+          ))}
+        </div>
+
+        <div className="about-col">
+          <span className="about-label">Contacto</span>
+          <a href="https://www.instagram.com/martinzutel/" target="_blank" rel="noopener noreferrer" className="about-link">Instagram</a>
+          <a href="https://www.linkedin.com/in/martin-zutel-914b67219/?locale=en" target="_blank" rel="noopener noreferrer" className="about-link">LinkedIn</a>
+        </div>
+      </div>
+    </motion.section>
+  );
+}
+
 const socialLinks = [
   { href: "https://www.instagram.com/martinzutel/", label: "Instagram", Icon: InstagramIcon },
   { href: "https://www.linkedin.com/in/martin-zutel-914b67219/?locale=en", label: "LinkedIn", Icon: LinkedInIcon },
@@ -38,6 +81,17 @@ const socialLinks = [
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<Tab>("fotografía");
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (contentRef.current) {
+      const rect = contentRef.current.getBoundingClientRect();
+      const isVisible = rect.top >= -50 && rect.top <= window.innerHeight;
+      if (!isVisible) {
+        window.scrollTo({ top: contentRef.current.offsetTop - 16, behavior: "smooth" });
+      }
+    }
+  }, [activeTab]);
 
   return (
     <main>
@@ -122,25 +176,22 @@ export default function Home() {
         </motion.div>
       </section>
 
-      <NavBar active={activeTab} onSelect={setActiveTab} />
-
-      {activeTab === "fotografía" ? (
-        <Gallery />
-      ) : (
-        <div
-          style={{
-            minHeight: "50vh",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            color: "var(--text-tertiary)",
-            fontSize: "0.875rem",
-            letterSpacing: "0.02em",
-          }}
-        >
-          próximamente
+      <div ref={contentRef}>
+        <NavBar active={activeTab} onSelect={setActiveTab} />
+        <div style={{ marginTop: "-5rem" }}>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+            >
+              {activeTab === "fotografía" ? <Gallery /> : <AboutSection />}
+            </motion.div>
+          </AnimatePresence>
         </div>
-      )}
+      </div>
     </main>
   );
 }
