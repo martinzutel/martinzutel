@@ -62,7 +62,7 @@ body {
 
 /* Hero */
 .hero-section {
-  min-height: 52vh;
+  min-height: 72vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   position: relative;
@@ -74,7 +74,7 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 140px;
+  height: 160px;
   background: linear-gradient(to bottom, transparent, var(--bg));
   pointer-events: none;
   z-index: 1;
@@ -83,10 +83,10 @@ body {
 .hero-content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 1.75rem;
-  padding-top: 3.5rem;
-  padding-bottom: 3rem;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  padding-top: 5rem;
+  padding-bottom: 2.5rem;
   padding-left: clamp(2rem, 5vw, 6rem);
   padding-right: 3rem;
 }
@@ -103,21 +103,14 @@ body {
   padding: 0 clamp(2rem, 5vw, 6rem) 6rem;
 }
 
-.gallery-grid {
-  display: flex;
-  gap: 6px;
-  align-items: flex-start;
-}
-
-.gallery-column {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+.masonry-grid {
+  columns: 3;
+  column-gap: 6px;
 }
 
 .masonry-item {
+  break-inside: avoid;
+  margin-bottom: 6px;
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -148,18 +141,15 @@ body {
     padding-right: clamp(2rem, 5vw, 6rem);
     padding-bottom: 3rem;
   }
-  .gallery-grid {
-    flex-direction: column;
-  }
-  .gallery-column {
-    width: 100%;
+  .masonry-grid {
+    columns: 2;
   }
 }
 
 /* Mobile */
 @media (max-width: 600px) {
   .hero-section {
-    min-height: 72svh;
+    min-height: 100svh;
   }
   .hero-content {
     padding-top: 5rem;
@@ -172,14 +162,9 @@ body {
   .hero-paragraph {
     max-width: 100%;
   }
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 6px;
-  }
-  .gallery-column {
-    width: 100%;
-    flex: auto;
+  .masonry-grid {
+    columns: 2;
+    column-gap: 4px;
   }
   .masonry-item {
     margin-bottom: 4px;
