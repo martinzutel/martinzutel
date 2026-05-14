@@ -86,7 +86,7 @@ body {
   justify-content: flex-start;
   gap: 1.5rem;
   padding-top: 5rem;
-  padding-bottom: 2.5rem;
+  padding-bottom: 0.5rem;
   padding-left: clamp(2rem, 5vw, 6rem);
   padding-right: 3rem;
 }
@@ -101,6 +101,10 @@ body {
 /* Gallery */
 .gallery-section {
   padding: 0 clamp(2rem, 5vw, 6rem) 6rem;
+}
+
+.content-outer {
+  margin-top: 0;
 }
 
 .masonry-grid {
@@ -255,9 +259,6 @@ body {
   }
   .gallery-section {
     padding: 0 0.75rem 4rem;
-  }
-  .content-wrapper {
-    margin-top: -2rem;
   }
   .about-section {
     padding: 5rem 1.5rem 5rem;
