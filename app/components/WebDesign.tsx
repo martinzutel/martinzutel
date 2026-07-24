@@ -100,21 +100,14 @@ function DeviceMockup({
       style={{ display: "block", textDecoration: "none" }}
     >
       {/*
-        Overlap layout:
-        - Container: relative + paddingBottom trick to set height
-        - Desktop: absolute, anchored top-left, 85% wide
-        - Phone: absolute, anchored bottom-right, 24% wide, overlaps desktop corner
+        Desktop in normal flow → sets the container height naturally.
+        Phone is absolute, bottom-right corner, z-index 2.
+        paddingBottom gives the phone room to hang below the desktop bottom.
       */}
-      <div
-        style={{
-          position: "relative",
-          width: "100%",
-          paddingBottom: "62%",
-          overflow: "visible",
-        }}
-      >
-        {/* Desktop browser frame */}
-        <div style={{ position: "absolute", top: 0, left: 0, width: "85%" }}>
+      <div style={{ position: "relative", paddingBottom: "7%" }}>
+
+        {/* Desktop browser frame — normal flow, full width */}
+        <div>
           {/* Chrome bar */}
           <div
             style={{
@@ -157,27 +150,27 @@ function DeviceMockup({
           </div>
         </div>
 
-        {/* Phone frame — overlaps bottom-right of desktop */}
+        {/* Phone — absolute, sits at bottom-right, overlaps desktop corner */}
         <div
           style={{
             position: "absolute",
             bottom: 0,
             right: 0,
-            width: "24%",
+            width: "21%",
             zIndex: 2,
             background: "#17150f",
-            border: "1px solid rgba(255,255,255,0.09)",
-            borderRadius: "22px",
+            border: "1px solid rgba(255,255,255,0.1)",
+            borderRadius: "20px",
             padding: "10px 6px 8px",
             display: "flex",
             flexDirection: "column",
             gap: "6px",
-            boxShadow: "0 24px 64px rgba(0,0,0,0.55), 0 4px 16px rgba(0,0,0,0.35)",
+            boxShadow: "0 20px 56px rgba(0,0,0,0.6), 0 4px 16px rgba(0,0,0,0.4)",
           }}
         >
           {/* Notch */}
           <div style={{ display: "flex", justifyContent: "center" }}>
-            <div style={{ width: 26, height: 4, background: "#2a2620", borderRadius: "9999px" }} />
+            <div style={{ width: 24, height: 4, background: "#2a2620", borderRadius: "9999px" }} />
           </div>
           {/* Screen */}
           <div
