@@ -136,26 +136,10 @@ body {
 /* About */
 .about-section {
   padding: 0.5rem clamp(2rem, 5vw, 6rem) 5rem;
-}
-
-.about-inner {
-  display: grid;
-  grid-template-columns: 1fr 0.85fr;
-  gap: 4rem;
-  align-items: start;
-}
-
-.about-left {
-  display: flex;
-  flex-direction: column;
-}
-
-.about-disciplines {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-self: stretch;
-  padding-top: 0.25rem;
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
 
 .about-bio-text {
@@ -237,10 +221,6 @@ body {
   .about-section {
     padding: 1.5rem clamp(2rem, 5vw, 6rem) 6rem;
   }
-  .about-inner {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
   .about-bio-text {
     max-width: 100%;
   }
@@ -290,12 +270,6 @@ body {
   }
   .about-section {
     padding: 1.25rem 1.5rem 4rem;
-  }
-  .about-inner {
-    grid-template-columns: 1fr;
-  }
-  .about-disciplines {
-    display: none;
   }
   .about-bio-text {
     max-width: 100%;
