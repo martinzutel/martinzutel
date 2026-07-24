@@ -222,7 +222,7 @@ function DeviceMockup({
 
 export default function WebDesign() {
   return (
-    <section style={{ padding: "3rem clamp(2rem, 5vw, 6rem) 8rem" }}>
+    <section style={{ padding: "0 clamp(2rem, 5vw, 6rem) 8rem" }}>
       {projects.map((p, i) => (
         <motion.article
           key={p.title}

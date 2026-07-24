@@ -180,12 +180,14 @@ export default function Home() {
 
       <div ref={contentRef} className="content-outer">
         <NavBar active={activeTab} onSelect={setActiveTab} />
-        <div style={{ padding: "0.75rem clamp(2rem, 5vw, 6rem) 0", textAlign: "center" }}>
-          <p style={{ fontSize: "0.75rem", color: "var(--text-tertiary)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
-            Una muestra de mi trabajo
-          </p>
-        </div>
-        <div className="content-wrapper">
+        {activeTab !== "sobre mí" && (
+          <div style={{ padding: "0.35rem clamp(2rem, 5vw, 6rem) 0", textAlign: "center" }}>
+            <p style={{ fontSize: "0.6875rem", color: "var(--text-tertiary)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+              Una muestra de mi trabajo
+            </p>
+          </div>
+        )}
+        <div className="content-wrapper" style={{ marginTop: activeTab === "sobre mí" ? "0" : "1.5rem" }}>
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
