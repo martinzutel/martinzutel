@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import MeshAnimation from "./components/MeshAnimation";
 import Gallery from "./components/Gallery";
-import BirdScroll from "./components/BirdScroll";
 import NavBar from "./components/NavBar";
 import WebDesign from "./components/WebDesign";
 type Tab = "fotografía" | "diseño web" | "sobre mí";
@@ -160,12 +159,6 @@ export default function Home() {
             ))}
           </motion.div>
 
-          <div style={{ display: "flex", gap: "2rem", marginTop: "1rem" }}>
-            <BirdScroll />
-            <div className="bird-second">
-              <BirdScroll />
-            </div>
-          </div>
         </div>
 
         <motion.div
