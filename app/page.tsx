@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 import MeshAnimation from "./components/MeshAnimation";
 import Gallery from "./components/Gallery";
 import NavBar from "./components/NavBar";
@@ -31,42 +30,55 @@ function LinkedInIcon() {
   );
 }
 
-function AboutPhotoComposition() {
-  const photos = [
-    { src: "/photos/IMG_9251.JPG", aspect: "4/3" },
-    { src: "/photos/IMG_0300.JPG", aspect: "3/4" },
-    { src: "/photos/IMG_8788.JPG", aspect: "3/4" },
-  ];
+const disciplines = [
+  { num: "01", label: "Fotografía" },
+  { num: "02", label: "Diseño\nGráfico" },
+  { num: "03", label: "Desarrollo\nWeb" },
+];
+
+function DisciplinesVisual() {
   return (
     <motion.div
-      initial={{ opacity: 0, x: 20 }}
+      initial={{ opacity: 0, x: 16 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
-      className="about-photos"
+      transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+      className="about-disciplines"
     >
-      <div style={{
-        position: "relative",
-        overflow: "hidden",
-        borderRadius: "6px",
-        aspectRatio: photos[0].aspect,
-        border: "1px solid var(--border)",
-        marginBottom: "6px",
-      }}>
-        <Image src={photos[0].src} alt="" fill sizes="40vw" style={{ objectFit: "cover" }} />
-      </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6px" }}>
-        {photos.slice(1).map((p) => (
-          <div key={p.src} style={{
-            position: "relative",
-            overflow: "hidden",
-            borderRadius: "6px",
-            aspectRatio: p.aspect,
-            border: "1px solid var(--border)",
+      {disciplines.map(({ num, label }, i) => (
+        <motion.div
+          key={num}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.25 + i * 0.1, ease: "easeOut" }}
+          style={{
+            borderTop: "1px solid var(--border)",
+            paddingTop: "1.1rem",
+            paddingBottom: "1.1rem",
+          }}
+        >
+          <span style={{
+            fontSize: "0.625rem",
+            color: "var(--accent)",
+            letterSpacing: "0.12em",
+            textTransform: "uppercase",
+            display: "block",
+            marginBottom: "0.5rem",
+            opacity: 0.7,
           }}>
-            <Image src={p.src} alt="" fill sizes="20vw" style={{ objectFit: "cover" }} />
-          </div>
-        ))}
-      </div>
+            {num}
+          </span>
+          <p style={{
+            fontSize: "clamp(2rem, 3.5vw, 3rem)",
+            fontWeight: 300,
+            letterSpacing: "-0.04em",
+            color: "var(--text-primary)",
+            lineHeight: 1.05,
+            whiteSpace: "pre-line",
+          }}>
+            {label}
+          </p>
+        </motion.div>
+      ))}
     </motion.div>
   );
 }
@@ -114,7 +126,7 @@ function AboutSection() {
           </div>
         </div>
 
-        <AboutPhotoComposition />
+        <DisciplinesVisual />
       </div>
     </motion.section>
   );

@@ -150,8 +150,12 @@ body {
   flex-direction: column;
 }
 
-.about-photos {
-  /* photo composition on the right */
+.about-disciplines {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: stretch;
+  padding-top: 0.25rem;
 }
 
 .about-bio-text {
@@ -290,7 +294,7 @@ body {
   .about-inner {
     grid-template-columns: 1fr;
   }
-  .about-photos {
+  .about-disciplines {
     display: none;
   }
   .about-bio-text {
