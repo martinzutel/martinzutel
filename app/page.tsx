@@ -10,7 +10,7 @@ type Tab = "fotografía" | "diseño web" | "sobre mí";
 
 function InstagramIcon() {
   return (
-    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.65" strokeLinecap="round" strokeLinejoin="round">
       <rect x="2" y="2" width="20" height="20" rx="5"/>
       <circle cx="12" cy="12" r="4"/>
       <circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/>
@@ -20,7 +20,7 @@ function InstagramIcon() {
 
 function LinkedInIcon() {
   return (
-    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.65" strokeLinecap="round" strokeLinejoin="round">
       <rect x="2" y="2" width="20" height="20" rx="3"/>
       <line x1="7" y1="11" x2="7" y2="17"/>
       <circle cx="7" cy="8" r="1.1" fill="currentColor" stroke="none"/>
@@ -144,14 +144,14 @@ export default function Home() {
                 whileHover={{ scale: 1.15, y: -2 }}
                 transition={{ duration: 0.18, ease: "easeOut" }}
                 style={{
-                  color: "var(--text-secondary)",
+                  color: "rgba(240, 237, 232, 0.62)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   transition: "color 0.22s ease",
                 }}
                 onMouseEnter={e => (e.currentTarget.style.color = "var(--accent)")}
-                onMouseLeave={e => (e.currentTarget.style.color = "var(--text-secondary)")}
+                onMouseLeave={e => (e.currentTarget.style.color = "rgba(240, 237, 232, 0.62)")}
               >
                 <Icon />
               </motion.a>
@@ -173,7 +173,7 @@ export default function Home() {
       <div ref={contentRef} className="content-outer">
         <NavBar active={activeTab} onSelect={setActiveTab} />
         {activeTab !== "sobre mí" && (
-          <div style={{ padding: "0.6rem clamp(2rem, 5vw, 6rem)", textAlign: "center" }}>
+          <div style={{ padding: "0.5rem clamp(2rem, 5vw, 6rem) 1.5rem", textAlign: "center" }}>
             <p style={{ fontSize: "0.6875rem", color: "var(--text-tertiary)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
               Una muestra de mi trabajo
             </p>

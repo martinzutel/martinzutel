@@ -32,7 +32,7 @@ const photos = [
 
 function GalleryItem({ src, w, h, priority }: { src: string; w: number; h: number; priority: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(priority);
 
   useEffect(() => {
     const el = ref.current;
