@@ -6,6 +6,7 @@ import MeshAnimation from "./components/MeshAnimation";
 import Gallery from "./components/Gallery";
 import NavBar from "./components/NavBar";
 import WebDesign from "./components/WebDesign";
+import FlowingLines from "./components/FlowingLines";
 type Tab = "fotografía" | "diseño web" | "sobre mí";
 
 function InstagramIcon() {
@@ -38,36 +39,46 @@ function AboutSection() {
       transition={{ duration: 0.55, ease: "easeOut" }}
       className="about-section"
     >
-      <p className="about-bio-text">
-        Me estoy abriendo camino en el{" "}
-        <span style={{ color: "var(--accent)" }}>diseño gráfico</span>, la{" "}
-        <span style={{ color: "var(--accent)" }}>fotografía</span> y el{" "}
-        <span style={{ color: "var(--accent)" }}>desarrollo web</span>. No
-        desde la teoría — desde el hacer. Cada proyecto es una oportunidad de
-        afinar el ojo, de aprender a ver antes de ejecutar.
-      </p>
+      <div className="about-side-anim">
+        <FlowingLines seed={0} />
+      </div>
 
-      <div className="about-grid">
-        <div className="about-col">
-          <span className="about-label">Formación</span>
-          <p className="about-value">Especialización en Tecnología, Comunicación e Información</p>
-          <p className="about-subvalue">ORT Belgrano</p>
-          <p className="about-value" style={{ marginTop: "1rem" }}>CBC — Imagen y Sonido</p>
-          <p className="about-subvalue">Universidad de Buenos Aires</p>
-        </div>
+      <div className="about-body">
+        <p className="about-bio-text">
+          Me estoy abriendo camino en el{" "}
+          <span style={{ color: "var(--accent)" }}>diseño gráfico</span>, la{" "}
+          <span style={{ color: "var(--accent)" }}>fotografía</span> y el{" "}
+          <span style={{ color: "var(--accent)" }}>desarrollo web</span>. No
+          desde la teoría — desde el hacer. Cada proyecto es una oportunidad de
+          afinar el ojo, de aprender a ver antes de ejecutar.
+        </p>
 
-        <div className="about-col">
-          <span className="about-label">Disciplinas</span>
-          {["Diseño gráfico", "Fotografía", "Desarrollo web"].map((d) => (
-            <p key={d} className="about-value">{d}</p>
-          ))}
-        </div>
+        <div className="about-grid">
+          <div className="about-col">
+            <span className="about-label">Formación</span>
+            <p className="about-value">Especialización en Tecnología, Comunicación e Información</p>
+            <p className="about-subvalue">ORT Belgrano</p>
+            <p className="about-value" style={{ marginTop: "1rem" }}>CBC — Imagen y Sonido</p>
+            <p className="about-subvalue">Universidad de Buenos Aires</p>
+          </div>
 
-        <div className="about-col">
-          <span className="about-label">Contacto</span>
-          <a href="https://www.instagram.com/martinzutel/" target="_blank" rel="noopener noreferrer" className="about-link">Instagram</a>
-          <a href="https://www.linkedin.com/in/martin-zutel-914b67219/?locale=en" target="_blank" rel="noopener noreferrer" className="about-link">LinkedIn</a>
+          <div className="about-col">
+            <span className="about-label">Disciplinas</span>
+            {["Diseño gráfico", "Fotografía", "Desarrollo web"].map((d) => (
+              <p key={d} className="about-value">{d}</p>
+            ))}
+          </div>
+
+          <div className="about-col">
+            <span className="about-label">Contacto</span>
+            <a href="https://www.instagram.com/martinzutel/" target="_blank" rel="noopener noreferrer" className="about-link">Instagram</a>
+            <a href="https://www.linkedin.com/in/martin-zutel-914b67219/?locale=en" target="_blank" rel="noopener noreferrer" className="about-link">LinkedIn</a>
+          </div>
         </div>
+      </div>
+
+      <div className="about-side-anim">
+        <FlowingLines seed={3} />
       </div>
     </motion.section>
   );

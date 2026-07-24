@@ -135,11 +135,20 @@ body {
 
 /* About */
 .about-section {
-  padding: 2.5rem clamp(2rem, 5vw, 6rem) 5rem;
-  max-width: 860px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
+  padding-top: 2.5rem;
+  padding-bottom: 5rem;
+  display: grid;
+  grid-template-columns: clamp(80px, 9vw, 140px) 1fr clamp(80px, 9vw, 140px);
+  align-items: start;
+}
+
+.about-side-anim {
+  align-self: stretch;
+  min-height: 300px;
+}
+
+.about-body {
+  padding: 0 clamp(1.5rem, 2.5vw, 3rem);
 }
 
 .about-bio-text {
@@ -219,7 +228,9 @@ body {
     padding-bottom: 3rem;
   }
   .about-section {
-    padding: 1.5rem clamp(2rem, 5vw, 6rem) 6rem;
+    padding-top: 1.5rem;
+    padding-bottom: 6rem;
+    grid-template-columns: clamp(60px, 7vw, 100px) 1fr clamp(60px, 7vw, 100px);
   }
   .about-bio-text {
     max-width: 100%;
@@ -269,7 +280,14 @@ body {
     padding: 0 0.75rem 4rem;
   }
   .about-section {
-    padding: 1.25rem 1.5rem 4rem;
+    padding: 1.25rem 0 4rem;
+    grid-template-columns: 1fr;
+  }
+  .about-side-anim {
+    display: none;
+  }
+  .about-body {
+    padding: 0 1.5rem;
   }
   .about-bio-text {
     max-width: 100%;
