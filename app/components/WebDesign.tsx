@@ -99,52 +99,21 @@ function DeviceMockup({
       rel="noopener noreferrer"
       style={{ display: "block", textDecoration: "none" }}
     >
+      {/* Devices row — flex bottom-aligned */}
       <div
         style={{
-          position: "relative",
-          width: "100%",
-          aspectRatio: "16 / 10",
           display: "flex",
           alignItems: "flex-end",
-          justifyContent: "center",
-          gap: "0",
+          gap: "12px",
+          width: "100%",
         }}
       >
-        {/* Architectural grid background */}
-        <svg
-          viewBox="0 0 480 300"
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            opacity: 0.04,
-            pointerEvents: "none",
-          }}
-          preserveAspectRatio="xMidYMid slice"
-        >
-          {[0, 1, 2, 3, 4, 5].map((n) => (
-            <line key={`v${n}`} x1={n * 96} y1="0" x2={n * 96} y2="300" stroke="var(--accent)" strokeWidth="0.5" />
-          ))}
-          {[0, 1, 2, 3, 4].map((n) => (
-            <line key={`h${n}`} x1="0" y1={n * 75} x2="480" y2={n * 75} stroke="var(--accent)" strokeWidth="0.5" />
-          ))}
-        </svg>
-
-        {/* Desktop frame */}
-        <div
-          style={{
-            position: "absolute",
-            left: 0,
-            bottom: 0,
-            width: "78%",
-            zIndex: 1,
-          }}
-        >
-          {/* Browser chrome */}
+        {/* Desktop browser frame */}
+        <div style={{ flex: 1, minWidth: 0 }}>
+          {/* Chrome bar */}
           <div
             style={{
-              background: "#1a1814",
+              background: "#181612",
               border: "1px solid var(--border)",
               borderBottom: "none",
               borderRadius: "8px 8px 0 0",
@@ -154,22 +123,24 @@ function DeviceMockup({
               gap: "5px",
             }}
           >
-            <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#3a3530", display: "inline-block" }} />
-            <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#3a3530", display: "inline-block" }} />
-            <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#3a3530", display: "inline-block" }} />
+            <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#302c28", display: "inline-block" }} />
+            <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#302c28", display: "inline-block" }} />
+            <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#302c28", display: "inline-block" }} />
           </div>
           {/* Screen */}
           <div
             style={{
               border: "1px solid var(--border)",
-              borderRadius: "0 0 4px 4px",
+              borderRadius: "0 0 6px 6px",
               overflow: "hidden",
               aspectRatio: "16 / 9",
               background: "var(--surface)",
               position: "relative",
             }}
           >
-            {desktopErr ? <ScreenPlaceholder /> : (
+            {desktopErr ? (
+              <ScreenPlaceholder />
+            ) : (
               <Image
                 src={imgDesktop}
                 alt="ZYH desktop"
@@ -184,52 +155,46 @@ function DeviceMockup({
         {/* Phone frame */}
         <div
           style={{
-            position: "absolute",
-            right: 0,
-            bottom: 0,
-            width: "22%",
-            zIndex: 2,
+            width: "18%",
+            flexShrink: 0,
+            background: "#181612",
+            border: "1px solid var(--border)",
+            borderRadius: "16px",
+            padding: "10px 5px 8px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "6px",
           }}
         >
+          {/* Notch */}
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <div style={{ width: 24, height: 4, background: "#2e2a26", borderRadius: "9999px" }} />
+          </div>
+          {/* Screen */}
           <div
             style={{
-              background: "#1a1814",
-              border: "1px solid var(--border)",
-              borderRadius: "14px",
-              padding: "10px 6px",
-              display: "flex",
-              flexDirection: "column",
-              gap: "6px",
+              borderRadius: "8px",
+              overflow: "hidden",
+              aspectRatio: "9 / 18",
+              background: "var(--surface)",
+              position: "relative",
             }}
           >
-            {/* Notch */}
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <div style={{ width: 28, height: 5, background: "#2a2824", borderRadius: "9999px" }} />
-            </div>
-            {/* Screen */}
-            <div
-              style={{
-                borderRadius: "8px",
-                overflow: "hidden",
-                aspectRatio: "9 / 18",
-                background: "var(--surface)",
-                position: "relative",
-              }}
-            >
-              {mobileErr ? <ScreenPlaceholder /> : (
-                <Image
-                  src={imgMobile}
-                  alt="ZYH mobile"
-                  fill
-                  style={{ objectFit: "cover", objectPosition: "top" }}
-                  onError={() => setMobileErr(true)}
-                />
-              )}
-            </div>
-            {/* Home indicator */}
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <div style={{ width: 20, height: 3, background: "#2a2824", borderRadius: "9999px" }} />
-            </div>
+            {mobileErr ? (
+              <ScreenPlaceholder />
+            ) : (
+              <Image
+                src={imgMobile}
+                alt="ZYH mobile"
+                fill
+                style={{ objectFit: "cover", objectPosition: "top" }}
+                onError={() => setMobileErr(true)}
+              />
+            )}
+          </div>
+          {/* Home bar */}
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <div style={{ width: 18, height: 3, background: "#2e2a26", borderRadius: "9999px" }} />
           </div>
         </div>
       </div>
