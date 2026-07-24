@@ -18,7 +18,7 @@ export default function NavBar({
       style={{
         display: "flex",
         justifyContent: "center",
-        padding: "0.9rem 0",
+        padding: "0.9rem 0 0",
         position: "sticky",
         top: "1.25rem",
         zIndex: 50,
