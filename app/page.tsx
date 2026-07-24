@@ -41,8 +41,7 @@ function AboutSection() {
       <p className="about-bio-text">
         Me estoy abriendo camino en el{" "}
         <span style={{ color: "var(--accent)" }}>diseño gráfico</span>, la{" "}
-        <span style={{ color: "var(--accent)" }}>fotografía</span>, la{" "}
-        <span style={{ color: "var(--accent)" }}>edición de video</span> y el{" "}
+        <span style={{ color: "var(--accent)" }}>fotografía</span> y el{" "}
         <span style={{ color: "var(--accent)" }}>desarrollo web</span>. No
         desde la teoría — desde el hacer. Cada proyecto es una oportunidad de
         afinar el ojo, de aprender a ver antes de ejecutar.
