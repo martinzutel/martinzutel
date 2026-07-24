@@ -6,17 +6,17 @@ import { useEffect, useRef, useState } from "react";
 
 const photos = [
   // Grupo 1 — alterna C·B·C·B·C·B·C
-  { src: "IMG_9251.JPG",     w: 4032, h: 2688 },
-  { src: "IMG_0300.JPG",     w: 3024, h: 4032 },
+  { src: "IMG_0592.JPG",     w: 2268, h: 2835 },
+  { src: "IMG_1598.JPG",     w: 2688, h: 4032 },
   { src: "IMG_2462.JPG",     w: 4032, h: 2880 },
   { src: "IMG_2647.JPG",     w: 3765, h: 3012 },
   { src: "IMG_3026.JPG",     w: 4032, h: 2688 },
   { src: "IMG_7557.JPG",     w: 2932, h: 2199 },
   { src: "IMG_3474.JPG",     w: 4006, h: 2003 },
   // Grupo 2 — alterna C·B·C·B·C·C
-  { src: "IMG_1598.JPG",     w: 2688, h: 4032 },
+  { src: "IMG_0300.JPG",     w: 3024, h: 4032 },
   { src: "IMG_8788.JPG",     w: 3814, h: 5085 },
-  { src: "IMG_0592.JPG",     w: 2268, h: 2835 },
+  { src: "IMG_9251.JPG",     w: 4032, h: 2688 },
   { src: "IMG_2454_jpg.JPG", w: 3836, h: 2158 },
   { src: "IMG_2667.JPG",     w: 4032, h: 3024 },
   { src: "IMG_4782.JPG",     w: 4032, h: 3024 },
