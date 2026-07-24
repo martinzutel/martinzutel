@@ -150,7 +150,7 @@ function DeviceMockup({
           </div>
         </div>
 
-        {/* Phone — iPhone X style, bottom-right, overlaps desktop */}
+        {/* Phone — Dynamic Island style, bottom-right, overlaps desktop */}
         <div
           style={{
             position: "absolute",
@@ -159,16 +159,16 @@ function DeviceMockup({
             width: "21%",
             zIndex: 2,
             background: "#19170f",
-            border: "1px solid rgba(255,255,255,0.11)",
-            borderRadius: "30px",
-            padding: "6px",
-            boxShadow: "0 20px 56px rgba(0,0,0,0.65), 0 4px 18px rgba(0,0,0,0.4)",
+            border: "1.5px solid rgba(255,255,255,0.1)",
+            borderRadius: "34px",
+            padding: "5px",
+            boxShadow: "0 22px 60px rgba(0,0,0,0.7), 0 4px 16px rgba(0,0,0,0.4)",
           }}
         >
-          {/* Screen with integrated notch */}
+          {/* Screen — inner radius = outer(34) - padding(5) = 29 */}
           <div
             style={{
-              borderRadius: "24px",
+              borderRadius: "29px",
               overflow: "hidden",
               aspectRatio: "9 / 19.5",
               background: "var(--surface)",
@@ -186,24 +186,20 @@ function DeviceMockup({
                 onError={() => setMobileErr(true)}
               />
             )}
-            {/* iPhone X notch — overlays the screen */}
+            {/* Dynamic Island pill */}
             <div
               style={{
                 position: "absolute",
-                top: 0,
+                top: "3.5%",
                 left: "50%",
                 transform: "translateX(-50%)",
-                width: "42%",
-                height: "7%",
-                background: "#19170f",
-                borderRadius: "0 0 14px 14px",
+                width: "29%",
+                height: "4.2%",
+                background: "#0c0b09",
+                borderRadius: "9999px",
                 zIndex: 3,
               }}
             />
-          </div>
-          {/* Home bar */}
-          <div style={{ display: "flex", justifyContent: "center", padding: "5px 0 3px" }}>
-            <div style={{ width: "30%", height: "3px", background: "rgba(255,255,255,0.22)", borderRadius: "9999px" }} />
           </div>
         </div>
       </div>
