@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import MeshAnimation from "./components/MeshAnimation";
 import Gallery from "./components/Gallery";
 import NavBar from "./components/NavBar";
@@ -30,6 +31,46 @@ function LinkedInIcon() {
   );
 }
 
+function AboutPhotoComposition() {
+  const photos = [
+    { src: "/photos/IMG_9251.JPG", aspect: "4/3" },
+    { src: "/photos/IMG_0300.JPG", aspect: "3/4" },
+    { src: "/photos/IMG_8788.JPG", aspect: "3/4" },
+  ];
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
+      className="about-photos"
+    >
+      <div style={{
+        position: "relative",
+        overflow: "hidden",
+        borderRadius: "6px",
+        aspectRatio: photos[0].aspect,
+        border: "1px solid var(--border)",
+        marginBottom: "6px",
+      }}>
+        <Image src={photos[0].src} alt="" fill sizes="40vw" style={{ objectFit: "cover" }} />
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6px" }}>
+        {photos.slice(1).map((p) => (
+          <div key={p.src} style={{
+            position: "relative",
+            overflow: "hidden",
+            borderRadius: "6px",
+            aspectRatio: p.aspect,
+            border: "1px solid var(--border)",
+          }}>
+            <Image src={p.src} alt="" fill sizes="20vw" style={{ objectFit: "cover" }} />
+          </div>
+        ))}
+      </div>
+    </motion.div>
+  );
+}
+
 function AboutSection() {
   return (
     <motion.section
@@ -38,36 +79,42 @@ function AboutSection() {
       transition={{ duration: 0.55, ease: "easeOut" }}
       className="about-section"
     >
-      <p className="about-bio-text">
-        Me estoy abriendo camino en el{" "}
-        <span style={{ color: "var(--accent)" }}>diseño gráfico</span>, la{" "}
-        <span style={{ color: "var(--accent)" }}>fotografía</span> y el{" "}
-        <span style={{ color: "var(--accent)" }}>desarrollo web</span>. No
-        desde la teoría — desde el hacer. Cada proyecto es una oportunidad de
-        afinar el ojo, de aprender a ver antes de ejecutar.
-      </p>
+      <div className="about-inner">
+        <div className="about-left">
+          <p className="about-bio-text">
+            Me estoy abriendo camino en el{" "}
+            <span style={{ color: "var(--accent)" }}>diseño gráfico</span>, la{" "}
+            <span style={{ color: "var(--accent)" }}>fotografía</span> y el{" "}
+            <span style={{ color: "var(--accent)" }}>desarrollo web</span>. No
+            desde la teoría — desde el hacer. Cada proyecto es una oportunidad de
+            afinar el ojo, de aprender a ver antes de ejecutar.
+          </p>
 
-      <div className="about-grid">
-        <div className="about-col">
-          <span className="about-label">Formación</span>
-          <p className="about-value">Especialización en Tecnología, Comunicación e Información</p>
-          <p className="about-subvalue">ORT Belgrano</p>
-          <p className="about-value" style={{ marginTop: "1rem" }}>CBC — Imagen y Sonido</p>
-          <p className="about-subvalue">Universidad de Buenos Aires</p>
+          <div className="about-grid">
+            <div className="about-col">
+              <span className="about-label">Formación</span>
+              <p className="about-value">Especialización en Tecnología, Comunicación e Información</p>
+              <p className="about-subvalue">ORT Belgrano</p>
+              <p className="about-value" style={{ marginTop: "1rem" }}>CBC — Imagen y Sonido</p>
+              <p className="about-subvalue">Universidad de Buenos Aires</p>
+            </div>
+
+            <div className="about-col">
+              <span className="about-label">Disciplinas</span>
+              {["Diseño gráfico", "Fotografía", "Desarrollo web"].map((d) => (
+                <p key={d} className="about-value">{d}</p>
+              ))}
+            </div>
+
+            <div className="about-col">
+              <span className="about-label">Contacto</span>
+              <a href="https://www.instagram.com/martinzutel/" target="_blank" rel="noopener noreferrer" className="about-link">Instagram</a>
+              <a href="https://www.linkedin.com/in/martin-zutel-914b67219/?locale=en" target="_blank" rel="noopener noreferrer" className="about-link">LinkedIn</a>
+            </div>
+          </div>
         </div>
 
-        <div className="about-col">
-          <span className="about-label">Disciplinas</span>
-          {["Diseño gráfico", "Fotografía", "Desarrollo web"].map((d) => (
-            <p key={d} className="about-value">{d}</p>
-          ))}
-        </div>
-
-        <div className="about-col">
-          <span className="about-label">Contacto</span>
-          <a href="https://www.instagram.com/martinzutel/" target="_blank" rel="noopener noreferrer" className="about-link">Instagram</a>
-          <a href="https://www.linkedin.com/in/martin-zutel-914b67219/?locale=en" target="_blank" rel="noopener noreferrer" className="about-link">LinkedIn</a>
-        </div>
+        <AboutPhotoComposition />
       </div>
     </motion.section>
   );

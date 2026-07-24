@@ -136,10 +136,22 @@ body {
 /* About */
 .about-section {
   padding: 0.5rem clamp(2rem, 5vw, 6rem) 5rem;
-  min-height: 55vh;
+}
+
+.about-inner {
+  display: grid;
+  grid-template-columns: 1fr 0.85fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.about-left {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+}
+
+.about-photos {
+  /* photo composition on the right */
 }
 
 .about-bio-text {
@@ -219,8 +231,11 @@ body {
     padding-bottom: 3rem;
   }
   .about-section {
-    padding: 5rem clamp(2rem, 5vw, 6rem) 6rem;
-    min-height: auto;
+    padding: 1.5rem clamp(2rem, 5vw, 6rem) 6rem;
+  }
+  .about-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
   }
   .about-bio-text {
     max-width: 100%;
@@ -270,9 +285,13 @@ body {
     padding: 0 0.75rem 4rem;
   }
   .about-section {
-    padding: 0.25rem 1.5rem 4rem;
-    min-height: auto;
-    justify-content: flex-start;
+    padding: 1.25rem 1.5rem 4rem;
+  }
+  .about-inner {
+    grid-template-columns: 1fr;
+  }
+  .about-photos {
+    display: none;
   }
   .about-bio-text {
     max-width: 100%;
