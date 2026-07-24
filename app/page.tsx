@@ -180,7 +180,7 @@ export default function Home() {
             </p>
           </div>
         )}
-        <div className="content-wrapper" style={{ marginTop: activeTab === "sobre mí" ? "0" : "1.5rem" }}>
+        <div className="content-wrapper" style={{ marginTop: activeTab === "sobre mí" ? "0" : "0.5rem" }}>
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
