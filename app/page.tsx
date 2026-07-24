@@ -122,11 +122,12 @@ export default function Home() {
             className="hero-paragraph text-lg font-light leading-relaxed"
             style={{ color: "var(--text-secondary)" }}
           >
-            Me obsesiona la{" "}
-            <span style={{ color: "var(--accent)" }}>forma</span>, el{" "}
-            <span style={{ color: "var(--accent)" }}>detalle</span> y el{" "}
-            <span style={{ color: "var(--accent)" }}>ritmo visual</span>.{" "}
-            Diseño gráfico, fotografía, video y web — este sitio incluido.
+            Me obsesiona el{" "}
+            <span style={{ color: "var(--accent)" }}>criterio visual</span>{" "}
+            aplicado al{" "}
+            <span style={{ color: "var(--accent)" }}>diseño</span> y la{" "}
+            <span style={{ color: "var(--accent)" }}>web</span>.{" "}
+            Que todo funcione tan bien como se ve — este sitio incluido.
           </motion.p>
 
           <motion.div
