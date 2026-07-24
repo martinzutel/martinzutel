@@ -230,8 +230,7 @@ export default function WebDesign() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, delay: i * 0.12, ease: "easeOut" }}
           style={{
-            borderTop: "1px solid var(--border)",
-            paddingTop: "3rem",
+            paddingTop: "2rem",
             paddingBottom: "3rem",
             display: "grid",
             gridTemplateColumns: "1fr 1.1fr",

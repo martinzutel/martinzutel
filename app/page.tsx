@@ -81,7 +81,7 @@ const socialLinks = [
 ];
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<Tab>("fotografía");
+  const [activeTab, setActiveTab] = useState<Tab>("diseño web");
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -180,7 +180,12 @@ export default function Home() {
 
       <div ref={contentRef} className="content-outer">
         <NavBar active={activeTab} onSelect={setActiveTab} />
-        <div className="content-wrapper" style={{ marginTop: "-5rem" }}>
+        <div style={{ padding: "0.75rem clamp(2rem, 5vw, 6rem) 0", textAlign: "center" }}>
+          <p style={{ fontSize: "0.75rem", color: "var(--text-tertiary)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+            Una muestra de mi trabajo
+          </p>
+        </div>
+        <div className="content-wrapper">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
