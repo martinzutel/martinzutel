@@ -1,22 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { useState } from "react";
 
 const projects = [
   {
     title: "ZYH — Landing de desarrollo inmobiliario",
     client: "AFRa Arquitectos",
-    tagline: "De un folleto PDF a un sitio en producción.",
-    short:
-      "Landing responsive para un fideicomiso al costo de AFRa Arquitectos (Buenos Aires), con extracción y verificación rigurosa de contenido real, identidad visual editorial propia, y pipeline de procesamiento de imágenes/video en Python. Deploy continuo vía GitHub + Vercel.",
-    extended: [
-      "El brief: AFRa Arquitectos tenía un folleto en PDF para su desarrollo ZYH (Zarraga y Heredia, Chacarita/Villa Ortúzar) y necesitaba una landing web real — no una réplica del PDF, sino un sitio con identidad propia que comunicara el proyecto de forma clara tanto en desktop como en mobile.",
-      "El proceso: Extraje y verifiqué cada dato del PDF original —medidas, especificaciones técnicas, plan de pago— contra el material fuente, sin dar nada por sentado. El diseño pasó por varias iteraciones hasta llegar a un lenguaje editorial/arquitectónico propio (tipografía Fraunces + Space Grotesk/Space Mono, paleta concreto/madera, motivos de \"hoja de obra\"), ajustado en tiempo real con feedback iterativo. Construí un pipeline en Python (Pillow, OpenCV) para conversión HEIC/HEVC, realce de fotos, generación de tarjetas de Open Graph a medida y el favicon de marca. Cada breakpoint mobile se ajustó para que las imágenes se vean completas, nunca recortadas, verificando proporciones a mano contra los archivos reales.",
-      "El resultado: Un sitio estático liviano (sin frameworks), con integración continua GitHub → Vercel, contraste verificado contra WCAG, y un flujo de trabajo iterativo que fue de \"acá está el PDF\" a un sitio en producción ajustándose pedido por pedido.",
-    ],
-    stack: ["HTML", "CSS", "JavaScript", "Python", "Pillow", "OpenCV", "Git/GitHub", "Vercel"],
+    tagline: "Del folleto al sitio.",
+    body: "AFRa Arquitectos tenía un PDF y necesitaba un sitio. Lo construí con identidad propia — tipografía, paleta y composición diseñadas desde cero. Cada detalle ajustado con feedback real, en producción desde el primer día.",
+    stack: ["HTML", "CSS", "JavaScript", "Python", "Vercel"],
     live: "https://zyh-zarraga-y-heredia.vercel.app",
     repo: "https://github.com/martinzutel/zyh-heredia-y-zarraga",
+    imgDesktop: "/projects/zyh/desktop.jpg",
+    imgMobile: "/projects/zyh/mobile.jpg",
   },
 ];
 
@@ -38,13 +36,7 @@ function StackChip({ label }: { label: string }) {
   );
 }
 
-function LinkArrow({
-  href,
-  children,
-}: {
-  href: string;
-  children: React.ReactNode;
-}) {
+function LinkArrow({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <a
       href={href}
@@ -73,6 +65,194 @@ function LinkArrow({
   );
 }
 
+function ScreenPlaceholder() {
+  return (
+    <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <svg viewBox="0 0 120 80" style={{ width: "60%", opacity: 0.12 }}>
+        <rect x="10" y="8" width="100" height="64" stroke="var(--accent)" strokeWidth="1" fill="none" rx="2" />
+        <line x1="10" y1="20" x2="110" y2="20" stroke="var(--accent)" strokeWidth="0.5" />
+        <rect x="18" y="28" width="36" height="36" stroke="var(--accent)" strokeWidth="0.5" fill="none" />
+        <rect x="62" y="28" width="36" height="8" stroke="var(--accent)" strokeWidth="0.5" fill="none" />
+        <rect x="62" y="42" width="36" height="4" stroke="var(--accent)" strokeWidth="0.5" fill="none" />
+        <rect x="62" y="52" width="24" height="4" stroke="var(--accent)" strokeWidth="0.5" fill="none" />
+      </svg>
+    </div>
+  );
+}
+
+function DeviceMockup({
+  live,
+  imgDesktop,
+  imgMobile,
+}: {
+  live: string;
+  imgDesktop: string;
+  imgMobile: string;
+}) {
+  const [desktopErr, setDesktopErr] = useState(false);
+  const [mobileErr, setMobileErr] = useState(false);
+
+  return (
+    <a
+      href={live}
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{ display: "block", textDecoration: "none" }}
+    >
+      <div
+        style={{
+          position: "relative",
+          width: "100%",
+          aspectRatio: "16 / 10",
+          display: "flex",
+          alignItems: "flex-end",
+          justifyContent: "center",
+          gap: "0",
+        }}
+      >
+        {/* Architectural grid background */}
+        <svg
+          viewBox="0 0 480 300"
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            opacity: 0.04,
+            pointerEvents: "none",
+          }}
+          preserveAspectRatio="xMidYMid slice"
+        >
+          {[0, 1, 2, 3, 4, 5].map((n) => (
+            <line key={`v${n}`} x1={n * 96} y1="0" x2={n * 96} y2="300" stroke="var(--accent)" strokeWidth="0.5" />
+          ))}
+          {[0, 1, 2, 3, 4].map((n) => (
+            <line key={`h${n}`} x1="0" y1={n * 75} x2="480" y2={n * 75} stroke="var(--accent)" strokeWidth="0.5" />
+          ))}
+        </svg>
+
+        {/* Desktop frame */}
+        <div
+          style={{
+            position: "absolute",
+            left: 0,
+            bottom: 0,
+            width: "78%",
+            zIndex: 1,
+          }}
+        >
+          {/* Browser chrome */}
+          <div
+            style={{
+              background: "#1a1814",
+              border: "1px solid var(--border)",
+              borderBottom: "none",
+              borderRadius: "8px 8px 0 0",
+              padding: "7px 10px",
+              display: "flex",
+              alignItems: "center",
+              gap: "5px",
+            }}
+          >
+            <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#3a3530", display: "inline-block" }} />
+            <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#3a3530", display: "inline-block" }} />
+            <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#3a3530", display: "inline-block" }} />
+          </div>
+          {/* Screen */}
+          <div
+            style={{
+              border: "1px solid var(--border)",
+              borderRadius: "0 0 4px 4px",
+              overflow: "hidden",
+              aspectRatio: "16 / 9",
+              background: "var(--surface)",
+              position: "relative",
+            }}
+          >
+            {desktopErr ? <ScreenPlaceholder /> : (
+              <Image
+                src={imgDesktop}
+                alt="ZYH desktop"
+                fill
+                style={{ objectFit: "cover", objectPosition: "top" }}
+                onError={() => setDesktopErr(true)}
+              />
+            )}
+          </div>
+        </div>
+
+        {/* Phone frame */}
+        <div
+          style={{
+            position: "absolute",
+            right: 0,
+            bottom: 0,
+            width: "22%",
+            zIndex: 2,
+          }}
+        >
+          <div
+            style={{
+              background: "#1a1814",
+              border: "1px solid var(--border)",
+              borderRadius: "14px",
+              padding: "10px 6px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "6px",
+            }}
+          >
+            {/* Notch */}
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <div style={{ width: 28, height: 5, background: "#2a2824", borderRadius: "9999px" }} />
+            </div>
+            {/* Screen */}
+            <div
+              style={{
+                borderRadius: "8px",
+                overflow: "hidden",
+                aspectRatio: "9 / 18",
+                background: "var(--surface)",
+                position: "relative",
+              }}
+            >
+              {mobileErr ? <ScreenPlaceholder /> : (
+                <Image
+                  src={imgMobile}
+                  alt="ZYH mobile"
+                  fill
+                  style={{ objectFit: "cover", objectPosition: "top" }}
+                  onError={() => setMobileErr(true)}
+                />
+              )}
+            </div>
+            {/* Home indicator */}
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <div style={{ width: 20, height: 3, background: "#2a2824", borderRadius: "9999px" }} />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* CTA */}
+      <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "0.75rem" }}>
+        <span
+          style={{
+            fontSize: "0.75rem",
+            color: "var(--text-tertiary)",
+            letterSpacing: "0.04em",
+            border: "1px solid var(--border)",
+            borderRadius: "9999px",
+            padding: "5px 14px",
+          }}
+        >
+          Ver sitio en vivo ↗
+        </span>
+      </div>
+    </a>
+  );
+}
+
 export default function WebDesign() {
   return (
     <section style={{ padding: "3rem clamp(2rem, 5vw, 6rem) 8rem" }}>
@@ -87,9 +267,9 @@ export default function WebDesign() {
             paddingTop: "3rem",
             paddingBottom: "3rem",
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
+            gridTemplateColumns: "1fr 1.1fr",
             gap: "4rem",
-            alignItems: "start",
+            alignItems: "center",
           }}
           className="web-project-card"
         >
@@ -131,22 +311,17 @@ export default function WebDesign() {
               </p>
             </div>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.85rem" }}>
-              {p.extended.map((para, j) => (
-                <p
-                  key={j}
-                  style={{
-                    fontSize: "0.9rem",
-                    color: "var(--text-secondary)",
-                    fontWeight: 300,
-                    lineHeight: 1.75,
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  {para}
-                </p>
-              ))}
-            </div>
+            <p
+              style={{
+                fontSize: "0.9375rem",
+                color: "var(--text-secondary)",
+                fontWeight: 300,
+                lineHeight: 1.75,
+                letterSpacing: "-0.01em",
+              }}
+            >
+              {p.body}
+            </p>
 
             <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
               {p.stack.map((s) => (
@@ -160,145 +335,8 @@ export default function WebDesign() {
             </div>
           </div>
 
-          {/* Right: preview */}
-          <a
-            href={p.live}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ display: "block", textDecoration: "none" }}
-            className="web-preview-link"
-          >
-            <div
-              className="web-preview"
-              style={{
-                background: "var(--surface)",
-                border: "1px solid var(--border)",
-                borderRadius: "12px",
-                overflow: "hidden",
-                aspectRatio: "16 / 10",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "1rem",
-                transition: "border-color 0.25s ease",
-                cursor: "pointer",
-                position: "relative",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLDivElement).style.borderColor =
-                  "rgba(212, 196, 160, 0.3)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLDivElement).style.borderColor =
-                  "var(--border)";
-              }}
-            >
-              {/* Decorative architectural grid */}
-              <svg
-                viewBox="0 0 480 300"
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  width: "100%",
-                  height: "100%",
-                  opacity: 0.06,
-                }}
-                preserveAspectRatio="xMidYMid slice"
-              >
-                {/* Grid lines */}
-                {[0, 1, 2, 3, 4, 5].map((n) => (
-                  <line
-                    key={`v${n}`}
-                    x1={n * 96}
-                    y1="0"
-                    x2={n * 96}
-                    y2="300"
-                    stroke="var(--accent)"
-                    strokeWidth="0.5"
-                  />
-                ))}
-                {[0, 1, 2, 3, 4].map((n) => (
-                  <line
-                    key={`h${n}`}
-                    x1="0"
-                    y1={n * 75}
-                    x2="480"
-                    y2={n * 75}
-                    stroke="var(--accent)"
-                    strokeWidth="0.5"
-                  />
-                ))}
-                {/* Floor plan-ish rectangle */}
-                <rect
-                  x="80"
-                  y="60"
-                  width="320"
-                  height="180"
-                  stroke="var(--accent)"
-                  strokeWidth="1"
-                  fill="none"
-                />
-                <rect
-                  x="112"
-                  y="90"
-                  width="100"
-                  height="120"
-                  stroke="var(--accent)"
-                  strokeWidth="0.6"
-                  fill="none"
-                />
-                <rect
-                  x="268"
-                  y="90"
-                  width="100"
-                  height="120"
-                  stroke="var(--accent)"
-                  strokeWidth="0.6"
-                  fill="none"
-                />
-              </svg>
-
-              <div style={{ position: "relative", textAlign: "center" }}>
-                <p
-                  style={{
-                    fontSize: "0.625rem",
-                    letterSpacing: "0.14em",
-                    textTransform: "uppercase",
-                    color: "var(--text-tertiary)",
-                    marginBottom: "0.4rem",
-                  }}
-                >
-                  Zarraga y Heredia · Chacarita
-                </p>
-                <p
-                  style={{
-                    fontSize: "clamp(1.4rem, 2.5vw, 2rem)",
-                    fontWeight: 300,
-                    letterSpacing: "-0.04em",
-                    color: "var(--text-primary)",
-                    lineHeight: 1,
-                  }}
-                >
-                  ZYH
-                </p>
-              </div>
-
-              <span
-                style={{
-                  position: "relative",
-                  fontSize: "0.75rem",
-                  color: "var(--text-tertiary)",
-                  letterSpacing: "0.04em",
-                  border: "1px solid var(--border)",
-                  borderRadius: "9999px",
-                  padding: "5px 14px",
-                }}
-              >
-                Ver sitio en vivo ↗
-              </span>
-            </div>
-          </a>
+          {/* Right: device mockup */}
+          <DeviceMockup live={p.live} imgDesktop={p.imgDesktop} imgMobile={p.imgMobile} />
         </motion.article>
       ))}
     </section>
