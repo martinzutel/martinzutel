@@ -230,6 +230,10 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
   }
+  .web-project-card {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
 }
 
 /* Mobile */

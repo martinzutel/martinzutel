@@ -6,7 +6,8 @@ import MeshAnimation from "./components/MeshAnimation";
 import Gallery from "./components/Gallery";
 import BirdScroll from "./components/BirdScroll";
 import NavBar from "./components/NavBar";
-type Tab = "fotografía" | "sobre mí";
+import WebDesign from "./components/WebDesign";
+type Tab = "fotografía" | "diseño web" | "sobre mí";
 
 function InstagramIcon() {
   return (
@@ -176,7 +177,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      <div ref={contentRef}>
+      <div ref={contentRef} className="content-outer">
         <NavBar active={activeTab} onSelect={setActiveTab} />
         <div className="content-wrapper" style={{ marginTop: "-5rem" }}>
           <AnimatePresence mode="wait">
@@ -187,7 +188,13 @@ export default function Home() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.35, ease: "easeOut" }}
             >
-              {activeTab === "fotografía" ? <Gallery /> : <AboutSection />}
+              {activeTab === "fotografía" ? (
+                <Gallery />
+              ) : activeTab === "diseño web" ? (
+                <WebDesign />
+              ) : (
+                <AboutSection />
+              )}
             </motion.div>
           </AnimatePresence>
         </div>

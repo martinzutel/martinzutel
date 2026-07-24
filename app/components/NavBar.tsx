@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 
-type Tab = "fotografía" | "sobre mí";
+type Tab = "fotografía" | "diseño web" | "sobre mí";
 
-const TABS: Tab[] = ["fotografía", "sobre mí"];
+const TABS: Tab[] = ["fotografía", "diseño web", "sobre mí"];
 
 export default function NavBar({
   active,
