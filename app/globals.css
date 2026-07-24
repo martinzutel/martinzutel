@@ -135,7 +135,7 @@ body {
 
 /* About */
 .about-section {
-  padding: 0.5rem clamp(2rem, 5vw, 6rem) 5rem;
+  padding: 2.5rem clamp(2rem, 5vw, 6rem) 5rem;
   max-width: 860px;
   margin-left: auto;
   margin-right: auto;
