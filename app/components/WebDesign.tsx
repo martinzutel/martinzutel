@@ -99,33 +99,38 @@ function DeviceMockup({
       rel="noopener noreferrer"
       style={{ display: "block", textDecoration: "none" }}
     >
-      {/* Devices row — flex bottom-aligned */}
+      {/*
+        Overlap layout:
+        - Container: relative + paddingBottom trick to set height
+        - Desktop: absolute, anchored top-left, 85% wide
+        - Phone: absolute, anchored bottom-right, 24% wide, overlaps desktop corner
+      */}
       <div
         style={{
-          display: "flex",
-          alignItems: "flex-end",
-          gap: "12px",
+          position: "relative",
           width: "100%",
+          paddingBottom: "62%",
+          overflow: "visible",
         }}
       >
         {/* Desktop browser frame */}
-        <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ position: "absolute", top: 0, left: 0, width: "85%" }}>
           {/* Chrome bar */}
           <div
             style={{
-              background: "#181612",
+              background: "#17150f",
               border: "1px solid var(--border)",
               borderBottom: "none",
               borderRadius: "8px 8px 0 0",
-              padding: "7px 10px",
+              padding: "8px 12px",
               display: "flex",
               alignItems: "center",
-              gap: "5px",
+              gap: "6px",
             }}
           >
-            <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#302c28", display: "inline-block" }} />
-            <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#302c28", display: "inline-block" }} />
-            <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#302c28", display: "inline-block" }} />
+            <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#2e2a24", display: "inline-block" }} />
+            <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#2e2a24", display: "inline-block" }} />
+            <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#2e2a24", display: "inline-block" }} />
           </div>
           {/* Screen */}
           <div
@@ -152,30 +157,34 @@ function DeviceMockup({
           </div>
         </div>
 
-        {/* Phone frame */}
+        {/* Phone frame — overlaps bottom-right of desktop */}
         <div
           style={{
-            width: "18%",
-            flexShrink: 0,
-            background: "#181612",
-            border: "1px solid var(--border)",
-            borderRadius: "16px",
-            padding: "10px 5px 8px",
+            position: "absolute",
+            bottom: 0,
+            right: 0,
+            width: "24%",
+            zIndex: 2,
+            background: "#17150f",
+            border: "1px solid rgba(255,255,255,0.09)",
+            borderRadius: "22px",
+            padding: "10px 6px 8px",
             display: "flex",
             flexDirection: "column",
             gap: "6px",
+            boxShadow: "0 24px 64px rgba(0,0,0,0.55), 0 4px 16px rgba(0,0,0,0.35)",
           }}
         >
           {/* Notch */}
           <div style={{ display: "flex", justifyContent: "center" }}>
-            <div style={{ width: 24, height: 4, background: "#2e2a26", borderRadius: "9999px" }} />
+            <div style={{ width: 26, height: 4, background: "#2a2620", borderRadius: "9999px" }} />
           </div>
           {/* Screen */}
           <div
             style={{
-              borderRadius: "8px",
+              borderRadius: "10px",
               overflow: "hidden",
-              aspectRatio: "9 / 18",
+              aspectRatio: "9 / 19",
               background: "var(--surface)",
               position: "relative",
             }}
@@ -194,7 +203,7 @@ function DeviceMockup({
           </div>
           {/* Home bar */}
           <div style={{ display: "flex", justifyContent: "center" }}>
-            <div style={{ width: 18, height: 3, background: "#2e2a26", borderRadius: "9999px" }} />
+            <div style={{ width: 20, height: 3, background: "#2a2620", borderRadius: "9999px" }} />
           </div>
         </div>
       </div>
