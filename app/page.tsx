@@ -60,7 +60,7 @@ function AboutSection() {
 
         <div className="about-col">
           <span className="about-label">Disciplinas</span>
-          {["Diseño gráfico", "Fotografía", "Edición de video", "Desarrollo web"].map((d) => (
+          {["Diseño gráfico", "Fotografía", "Desarrollo web"].map((d) => (
             <p key={d} className="about-value">{d}</p>
           ))}
         </div>
