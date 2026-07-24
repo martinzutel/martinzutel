@@ -108,13 +108,18 @@ body {
 }
 
 .masonry-grid {
-  columns: 3;
-  column-gap: 6px;
+  display: flex;
+  gap: 6px;
+}
+
+.masonry-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .masonry-item {
-  break-inside: avoid;
-  margin-bottom: 6px;
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -213,9 +218,6 @@ body {
     padding-right: 1.5rem;
     padding-bottom: 3rem;
   }
-  .masonry-grid {
-    columns: 2;
-  }
   .about-section {
     padding: 5rem clamp(2rem, 5vw, 6rem) 6rem;
     min-height: auto;
@@ -239,6 +241,9 @@ body {
     grid-template-columns: 1fr;
     min-height: auto;
   }
+  .hero-section::after {
+    display: none;
+  }
   .hero-visual {
     display: none;
   }
@@ -256,11 +261,10 @@ body {
     max-width: 100%;
   }
   .masonry-grid {
-    columns: 2;
-    column-gap: 4px;
+    gap: 4px;
   }
-  .masonry-item {
-    margin-bottom: 4px;
+  .masonry-col {
+    gap: 4px;
   }
   .gallery-section {
     padding: 0 0.75rem 4rem;

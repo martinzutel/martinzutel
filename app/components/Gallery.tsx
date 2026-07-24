@@ -60,7 +60,7 @@ function GalleryItem({ src, w, h, priority }: { src: string; w: number; h: numbe
         src={`/photos/${src}`}
         alt=""
         fill
-        sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        sizes="(max-width: 600px) 50vw, (max-width: 1024px) 50vw, 33vw"
         style={{ objectFit: "cover", transition: "transform 0.6s ease" }}
         priority={priority}
         onMouseEnter={(e) => ((e.currentTarget as HTMLImageElement).style.transform = "scale(1.03)")}
@@ -73,6 +73,19 @@ function GalleryItem({ src, w, h, priority }: { src: string; w: number; h: numbe
 export default function Gallery() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0 });
+  const [numCols, setNumCols] = useState(3);
+
+  useEffect(() => {
+    const update = () => setNumCols(window.innerWidth <= 1024 ? 2 : 3);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  // Distribute photos round-robin across columns so all columns start at the same height
+  const columns = Array.from({ length: numCols }, (_, ci) =>
+    photos.filter((_, i) => i % numCols === ci)
+  );
 
   return (
     <motion.section
@@ -99,8 +112,16 @@ export default function Gallery() {
         }}
       />
       <div className="masonry-grid">
-        {photos.map((photo, i) => (
-          <GalleryItem key={photo.src} {...photo} priority={i < 3} />
+        {columns.map((col, ci) => (
+          <div key={ci} className="masonry-col">
+            {col.map((photo, i) => (
+              <GalleryItem
+                key={photo.src}
+                {...photo}
+                priority={i === 0 && ci < 3}
+              />
+            ))}
+          </div>
         ))}
       </div>
     </motion.section>

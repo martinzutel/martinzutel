@@ -173,13 +173,13 @@ export default function Home() {
       <div ref={contentRef} className="content-outer">
         <NavBar active={activeTab} onSelect={setActiveTab} />
         {activeTab !== "sobre mí" && (
-          <div style={{ padding: "0.15rem clamp(2rem, 5vw, 6rem) 0", textAlign: "center" }}>
+          <div style={{ padding: "0.6rem clamp(2rem, 5vw, 6rem)", textAlign: "center" }}>
             <p style={{ fontSize: "0.6875rem", color: "var(--text-tertiary)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
               Una muestra de mi trabajo
             </p>
           </div>
         )}
-        <div className="content-wrapper" style={{ marginTop: activeTab === "sobre mí" ? "0" : "0.5rem" }}>
+        <div className="content-wrapper" style={{ marginTop: 0 }}>
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
