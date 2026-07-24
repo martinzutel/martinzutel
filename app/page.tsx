@@ -173,7 +173,7 @@ export default function Home() {
       <div ref={contentRef} className="content-outer">
         <NavBar active={activeTab} onSelect={setActiveTab} />
         {activeTab !== "sobre mí" && (
-          <div style={{ padding: "1.25rem clamp(2rem, 5vw, 6rem)", textAlign: "center" }}>
+          <div style={{ padding: "0.4rem clamp(2rem, 5vw, 6rem)", textAlign: "center" }}>
             <p style={{ fontSize: "0.6875rem", color: "var(--text-tertiary)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
               Una muestra de mi trabajo
             </p>
