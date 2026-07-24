@@ -160,7 +160,7 @@ function DeviceMockup({
             zIndex: 2,
             background: "#19170f",
             border: "1.5px solid rgba(255,255,255,0.1)",
-            borderRadius: "34px",
+            borderRadius: "22px",
             padding: "5px",
             boxShadow: "0 22px 60px rgba(0,0,0,0.7), 0 4px 16px rgba(0,0,0,0.4)",
           }}
@@ -168,7 +168,7 @@ function DeviceMockup({
           {/* Screen — inner radius = outer(34) - padding(5) = 29 */}
           <div
             style={{
-              borderRadius: "29px",
+              borderRadius: "17px",
               overflow: "hidden",
               aspectRatio: "9 / 19.5",
               background: "var(--surface)",
