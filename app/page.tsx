@@ -31,9 +31,18 @@ function LinkedInIcon() {
   );
 }
 
+function WhatsAppIcon() {
+  return (
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>
+    </svg>
+  );
+}
+
 const socialLinks = [
   { href: "https://www.instagram.com/martinzutel/", label: "Instagram", Icon: InstagramIcon },
   { href: "https://www.linkedin.com/in/martin-zutel-914b67219/?locale=en", label: "LinkedIn", Icon: LinkedInIcon },
+  { href: "https://wa.me/541137728172", label: "WhatsApp", Icon: WhatsAppIcon },
 ];
 
 export default function Home() {
