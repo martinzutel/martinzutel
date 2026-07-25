@@ -9,8 +9,22 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Martin Zutelman",
-  description: "Diseño gráfico, fotografía y contenido audiovisual. Estudiante de Imagen y Sonido (UBA) con criterio visual y atención al detalle.",
+  title: "Martin Zutelman — Fotografía · Diseño · Web",
+  description: "Portfolio de Martin Zutelman — fotografía, diseño gráfico y desarrollo web. Proyectos reales con criterio visual, desde la identidad hasta el código. Buenos Aires.",
+  metadataBase: new URL("https://martinzutelman.com"),
+  openGraph: {
+    title: "Martin Zutelman — Fotografía · Diseño · Web",
+    description: "Portfolio de Martin Zutelman — fotografía, diseño gráfico y desarrollo web. Proyectos reales con criterio visual, desde la identidad hasta el código. Buenos Aires.",
+    url: "https://martinzutelman.com",
+    siteName: "Martin Zutelman",
+    locale: "es_AR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Martin Zutelman — Fotografía · Diseño · Web",
+    description: "Portfolio de Martin Zutelman — fotografía, diseño gráfico y desarrollo web. Proyectos reales con criterio visual, desde la identidad hasta el código. Buenos Aires.",
+  },
   icons: {
     icon: "/favicon.svg",
   },

@@ -31,6 +31,17 @@ function LinkedInIcon() {
   );
 }
 
+function WhatsAppIcon() {
+  return (
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="9.5" strokeWidth="1.65"/>
+      <g transform="translate(12 12) rotate(-25) scale(0.48) translate(-12 -12)" strokeWidth="3.4">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 9.8 19.79 19.79 0 0 1 1.61 1.14 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8a16 16 0 0 0 6 6l.77-.77a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+      </g>
+    </svg>
+  );
+}
+
 function AboutSection() {
   return (
     <motion.section
@@ -87,6 +98,7 @@ function AboutSection() {
 const socialLinks = [
   { href: "https://www.instagram.com/martinzutel/", label: "Instagram", Icon: InstagramIcon },
   { href: "https://www.linkedin.com/in/martin-zutel-914b67219/?locale=en", label: "LinkedIn", Icon: LinkedInIcon },
+  { href: "https://wa.me/541137728172", label: "WhatsApp", Icon: WhatsAppIcon },
 ];
 
 export default function Home() {
@@ -155,14 +167,14 @@ export default function Home() {
                 whileHover={{ scale: 1.15, y: -2 }}
                 transition={{ duration: 0.18, ease: "easeOut" }}
                 style={{
-                  color: "rgba(240, 237, 232, 0.62)",
+                  color: "rgba(240, 237, 232, 0.88)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   transition: "color 0.22s ease",
                 }}
                 onMouseEnter={e => (e.currentTarget.style.color = "var(--accent)")}
-                onMouseLeave={e => (e.currentTarget.style.color = "rgba(240, 237, 232, 0.62)")}
+                onMouseLeave={e => (e.currentTarget.style.color = "rgba(240, 237, 232, 0.88)")}
               >
                 <Icon />
               </motion.a>

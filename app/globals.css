@@ -3,10 +3,10 @@
 :root {
   --bg: #0c0b09;
   --surface: #141210;
-  --border: #211f1b;
+  --border: #271f18;
   --text-primary: #f0ede8;
-  --text-secondary: #9e9488;
-  --text-tertiary: #4e4840;
+  --text-secondary: #a49480;
+  --text-tertiary: #544838;
   --accent: #D4C4A0;
   --accent-dim: rgba(212, 196, 160, 0.15);
 }
@@ -213,6 +213,14 @@ body {
   color: var(--accent);
 }
 
+/* Phone mockup — border-radius scales with element width via % */
+.phone-overlay {
+  border-radius: 8.7%;
+}
+.phone-overlay-screen {
+  border-radius: 6.7%;
+}
+
 /* Tablet */
 @media (max-width: 1024px) {
   .bird-second {
@@ -278,6 +286,9 @@ body {
   }
   .gallery-section {
     padding: 0 0.75rem 4rem;
+  }
+  .phone-overlay {
+    display: none;
   }
   .about-section {
     padding: 1.25rem 0 4rem;
