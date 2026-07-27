@@ -213,12 +213,12 @@ body {
   color: var(--accent);
 }
 
-/* Phone mockup — border-radius scales with element width via % */
+/* Phone mockup — Apple border-radius ratio (~19% of width) */
 .phone-overlay {
-  border-radius: 8.7%;
+  border-radius: 19%;
 }
 .phone-overlay-screen {
-  border-radius: 6.7%;
+  border-radius: 15%;
 }
 
 /* Tablet */
@@ -288,7 +288,7 @@ body {
     padding: 0 0.75rem 4rem;
   }
   .phone-overlay {
-    display: none;
+    width: 28%;
   }
   .about-section {
     padding: 1.25rem 0 4rem;
