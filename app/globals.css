@@ -213,12 +213,13 @@ body {
   color: var(--accent);
 }
 
-/* Phone mockup — Apple border-radius ratio (~19% of width) */
+/* Phone mockup — circular corners via H%/V% syntax.
+   V% = H% × (width/height) so both radii are equal in px at any size. */
 .phone-overlay {
-  border-radius: 19%;
+  border-radius: 19% / 9%;
 }
 .phone-overlay-screen {
-  border-radius: 15%;
+  border-radius: 17% / 7.85%;
 }
 
 /* Tablet */
