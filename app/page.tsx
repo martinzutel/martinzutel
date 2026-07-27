@@ -140,7 +140,7 @@ export default function Home() {
             className="hero-paragraph text-lg font-light leading-relaxed"
             style={{ color: "var(--text-secondary)" }}
           >
-            Me obsesiona el{" "}
+            Me importa el{" "}
             <span style={{ color: "var(--accent)" }}>criterio visual</span>{" "}
             aplicado al{" "}
             <span style={{ color: "var(--accent)" }}>diseño</span> y la{" "}
